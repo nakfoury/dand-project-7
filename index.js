@@ -2,7 +2,7 @@ var svg = dimple.newSvg(".zinger", 800, 600);
 d3.csv("titanic-data.csv",function(data){
     var chart = new dimple.chart(svg,data);
     var c = chart.addCategoryAxis("x", ["Pclass", "Sex"]);
-    c.title = "Passenger Class";
+    c.title = "Fare Class";
     var m = chart.addMeasureAxis("y", "Survived");
     m.overrideMax = 1;
     m.title = "Survival Rate";
