@@ -1,5 +1,5 @@
 var svg = dimple.newSvg(".zinger", 800, 600);
-d3.csv("titanic-data.csv",function(data){
+d3.csv("../titanic-data.csv",function(data){
     var females = data.filter(d => d.Sex == 'female');
     var males = data.filter(d => d.Sex == 'male');
 
