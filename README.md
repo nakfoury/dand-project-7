@@ -13,7 +13,10 @@ feedback, and compiled it in this section.
 - Graph should be centered
 - Can tell what's being described, but graph needs more description
 ### Software Developer #2
+- It would be nice to see the number of passengers in each group
 ### Student
+- Add another dimension for passenger class
 ## Resources
 - [Dimple.js Documentation](http://dimplejs.org/)
 - [the deep blue (waves)](https://codepen.io/andyfitz/pen/akAKdV)
+- https://stackoverflow.com/questions/32618638/override-dimple-tooltip-text-only?rq=1

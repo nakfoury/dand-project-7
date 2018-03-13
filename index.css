@@ -38,4 +38,11 @@ body {
 .zinger > svg{
   margin: auto;
   display: block;
+  margin-bottom: 8em;
+}
+h1 {
+    text-align: center;
+}
+h2 {
+    text-align: center;
 }

@@ -1,19 +1,18 @@
 var svg = dimple.newSvg(".zinger", 800, 600);
 d3.csv("titanic-data.csv",function(data){
-    var females = data.filter(d => d.Sex == 'female');
-    var males = data.filter(d => d.Sex == 'male');
-
-    var femaleSurvivalRate = females.filter(elt => elt.Survived == 1).length / females.length;
-    var maleSurvivalRate = males.filter(elt => elt.Survived == 1).length / males.length;
-
-    var data_final = [
-      { "Sex":"Male", "Survival Rate": femaleSurvivalRate },
-      { "Sex":"Female", "Survival Rate": maleSurvivalRate }
-      ];
-    var chart = new dimple.chart(svg,data_final);
-    console.log(data_final);
-    chart.addCategoryAxis("x", "Sex");
-    chart.addMeasureAxis("y", "Survival Rate").overrideMax = 1;
-    chart.addSeries(null, dimple.plot.bar);
+    var chart = new dimple.chart(svg,data);
+    var c = chart.addCategoryAxis("x", ["Pclass", "Sex"]);
+    c.title = "Passenger Class";
+    var m = chart.addMeasureAxis("y", "Survived");
+    m.overrideMax = 1;
+    m.title = "Survival Rate";
+    var s = chart.addSeries("Sex", dimple.plot.bar);
+    s.aggregate = dimple.aggregateMethod.avg;
+    s.getTooltipText = function(e) {
+        return ["Survival Rate: " + e.y.toFixed(3),
+                "Total Passengers: " + e.yCount,
+                "Surviving Passengers: " + Math.round(e.y * e.yCount)];
+    };
+    chart.addLegend(65, 10, 510, 20, "right");
     chart.draw();
 });
